@@ -8,7 +8,8 @@
         "test": "ng test",
         "lint": "ng lint",
         "e2e": "ng e2e",
-        "package": "cat ./dist/test-web-component/runtime.js ./dist/test-web-component/polyfills.js ./dist/test-web-component/scripts.js ./dist/test-web-component/main.js > fd-elements.js"
+        "package": "cat ./dist/test-web-component/runtime.js ./dist/test-web-component/polyfills.js ./dist/test-web-component/scripts.js ./dist/test-web-component/main.js > fd-elements.js",
+        "all": "npm run build && npm run package"
     },
     "private": true,
     "dependencies": {
