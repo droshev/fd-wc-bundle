@@ -1,9 +1,18 @@
-import { Input, Component, Inject, ElementRef } from '@angular/core';
+import {
+    Input,
+    Component,
+    Inject,
+    ElementRef,
+    ViewEncapsulation
+} from '@angular/core';
 import { AbstractFdNgxClass } from '../utils/abstract-fd-ngx-class';
 
 @Component({
     selector: 'fd-badge',
-    templateUrl: './badge-label.component.html'
+    templateUrl: './badge-label.component.html',
+    styleUrls: ['./badge.component.scss'],
+
+    encapsulation: ViewEncapsulation.Native
 })
 export class BadgeComponent extends AbstractFdNgxClass {
     @Input() status;
