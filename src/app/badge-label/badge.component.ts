@@ -1,10 +1,4 @@
-import {
-    Input,
-    Component,
-    Inject,
-    ElementRef,
-    ViewEncapsulation
-} from '@angular/core';
+import { Input, Component, Inject, ElementRef, ViewEncapsulation } from '@angular/core';
 import { AbstractFdNgxClass } from '../utils/abstract-fd-ngx-class';
 
 @Component({
@@ -12,7 +6,7 @@ import { AbstractFdNgxClass } from '../utils/abstract-fd-ngx-class';
     templateUrl: './badge-label.component.html',
     styleUrls: ['./badge.component.scss'],
 
-    encapsulation: ViewEncapsulation.Native
+    encapsulation: ViewEncapsulation.ShadowDom,
 })
 export class BadgeComponent extends AbstractFdNgxClass {
     @Input() status;
@@ -31,5 +25,17 @@ export class BadgeComponent extends AbstractFdNgxClass {
 
     constructor(@Inject(ElementRef) elementRef: ElementRef) {
         super(elementRef);
+    }
+
+    getClassnames() {
+        let _classes = 'fd-badge';
+
+        if (this.status) {
+            _classes += ' fd-badge--' + this.status;
+        }
+        if (this.modifier) {
+            _classes += ' fd-badge--' + this.modifier;
+        }
+        return _classes;
     }
 }

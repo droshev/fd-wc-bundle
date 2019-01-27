@@ -1,10 +1,20 @@
-import { Component, Input, OnInit, HostListener, ElementRef, EventEmitter, Output } from '@angular/core';
+import {
+    Component,
+    Input,
+    OnInit,
+    HostListener,
+    ElementRef,
+    EventEmitter,
+    Output,
+    ViewEncapsulation,
+} from '@angular/core';
 import { CalendarDay, CalendarType } from '../calendar/calendar.component';
 
 @Component({
     selector: 'fd-date-picker',
     templateUrl: './date-picker.component.html',
-    styleUrls: ['./date-picker.component.scss']
+    styleUrls: ['./date-picker.component.scss'],
+    encapsulation: ViewEncapsulation.ShadowDom,
 })
 export class DatePickerComponent implements OnInit {
     inputFieldDate = null;
@@ -29,21 +39,21 @@ export class DatePickerComponent implements OnInit {
 
     @Input()
     selectedDay: CalendarDay = {
-        date: null
+        date: null,
     };
     @Output()
     selectedDayChange = new EventEmitter();
 
     @Input()
     selectedRangeFirst: CalendarDay = {
-        date: null
+        date: null,
     };
     @Output()
     selectedRangeFirstChange = new EventEmitter();
 
     @Input()
     selectedRangeLast: CalendarDay = {
-        date: null
+        date: null,
     };
     @Output()
     selectedRangeLastChange = new EventEmitter();
@@ -92,7 +102,8 @@ export class DatePickerComponent implements OnInit {
                 this.selectedRangeLast = d.selectedLastDay;
                 this.selectedRangeFirstChange.emit(this.selectedRangeFirst);
                 this.selectedRangeLastChange.emit(this.selectedRangeLast);
-                this.inputFieldDate = d.selectedFirstDay.date.toLocaleDateString() + ' - ' + d.selectedLastDay.date.toLocaleDateString();
+                this.inputFieldDate =
+                    d.selectedFirstDay.date.toLocaleDateString() + ' - ' + d.selectedLastDay.date.toLocaleDateString();
             }
         }
     }

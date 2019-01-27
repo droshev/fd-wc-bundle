@@ -1,9 +1,11 @@
-import { Component, ElementRef, Inject, Input } from '@angular/core';
+import { Component, ElementRef, Inject, Input, ViewEncapsulation } from '@angular/core';
 import { AbstractFdNgxClass } from '../utils/abstract-fd-ngx-class';
 
 @Component({
     selector: 'fd-label',
-    templateUrl: './badge-label.component.html'
+    templateUrl: './badge-label.component.html',
+    styleUrls: ['./badge.component.scss'],
+    encapsulation: ViewEncapsulation.ShadowDom,
 })
 export class LabelComponent extends AbstractFdNgxClass {
     @Input() status: string = '';
@@ -35,5 +37,28 @@ export class LabelComponent extends AbstractFdNgxClass {
 
     constructor(@Inject(ElementRef) elementRef: ElementRef) {
         super(elementRef);
+    }
+
+    getClassnames() {
+        let _classes = '';
+        if (this.isStatusLabel) {
+            _classes = 'fd-status-label';
+            if (this.status) {
+                _classes += ' fd-status-label--' + this.status;
+            }
+            if (this.statusIcon) {
+                _classes += ' fd-status-label--' + this.statusIcon;
+            }
+            if (this.icon) {
+                _classes += ' sap-icon--' + this.icon;
+            }
+        } else {
+            _classes = 'fd-label';
+            if (this.status) {
+                _classes += ' fd-label--' + this.status;
+            }
+        }
+
+        return _classes;
     }
 }

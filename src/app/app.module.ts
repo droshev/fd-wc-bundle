@@ -33,41 +33,27 @@ import { InputGroupSearchComponent } from './input-group/input-group-search.comp
         PopoverControlComponent,
         InputGroupComponent,
         InputGroupNumberComponent,
-        InputGroupSearchComponent
+        InputGroupSearchComponent,
     ],
     imports: [BrowserModule, UtilsModule, CommonModule, FormsModule],
     providers: [],
-    entryComponents: [
-        MadeComponent,
-        BadgeComponent,
-        LabelComponent,
-        DatePickerComponent
-    ]
+    entryComponents: [MadeComponent, BadgeComponent, LabelComponent, DatePickerComponent],
 })
 export class AppModule {
     constructor(private injector: Injector) {
         const badge = createCustomElement(BadgeComponent, {
-            injector
+            injector,
         });
         customElements.define('fd-badge', badge);
+        const label = createCustomElement(LabelComponent, {
+            injector,
+        });
+        customElements.define('fd-label', label);
+        const dp = createCustomElement(DatePickerComponent, {
+            injector,
+        });
+        customElements.define('fd-date-picker', dp);
     }
 
-    ngDoBootstrap() {
-        // const made = createCustomElement(MadeComponent, {
-        //     injector: this.injector
-        // });
-        // customElements.define('made-for-fun', made);
-        // const badge = createCustomElement(BadgeComponent, {
-        //     injector: this.injector
-        // });
-        // customElements.define('fd-badge', badge);
-        // const label = createCustomElement(LabelComponent, {
-        //     injector: this.injector
-        // });
-        // customElements.define('made-for-label', label);
-        // const datePicker = createCustomElement(DatePickerComponent, {
-        //     injector: this.injector
-        // });
-        // customElements.define('made-for-datepicker', datePicker);
-    }
+    ngDoBootstrap() {}
 }
